@@ -50,6 +50,8 @@
         return deferred.promise;
       };
 
+      self.modalLayers = [];
+
       self.showModal = function(options) {
 
         //  Create a deferred we'll resolve when the modal is ready.
@@ -89,13 +91,17 @@
                 window.setTimeout(function() {
                   //  Resolve the 'close' promise.
                   closeDeferred.resolve(result);
+                  var modalObj = self.modalLayers.find(function (modalObj) {
+                    return modalObj.modal === modal;
+                  });
+                  self.modalLayers.splice(self.modalLayers.indexOf(modalObj), 1);
 
                   //  We can now clean up the scope and remove the element from the DOM.
                   modalScope.$destroy();
                   modalElement.remove();
-                  
+
                   //  Unless we null out all of these objects we seem to suffer
-                  //  from memory leaks, if anyone can explain why then I'd 
+                  //  from memory leaks, if anyone can explain why then I'd
                   //  be very interested to know.
                   inputs.close = null;
                   deferred = null;
@@ -145,6 +151,10 @@
             };
 
             //  ...which is passed to the caller via the promise.
+            self.modalLayers.push({
+              modal: modal,
+              close: inputs.close
+            });
             deferred.resolve(modal);
 
           })
