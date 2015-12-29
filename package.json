@@ -1,6 +1,6 @@
 {
   "name": "angular-modal-service",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "AngularJS Service for showing Modals and Popups",
   "main": "./dst/angular-modal-service.js",
   "scripts": {
@@ -31,7 +31,6 @@
     "gulp-open": "^0.3.2",
     "jshint-stylish": "^1.0.1",
     "karma": "^0.12.31",
-    "karma-chrome-launcher": "^0.1.3",
     "karma-chrome-launcher": "^0.1.3",
     "karma-coverage": "^0.2.1",
     "karma-jasmine": "~0.3",
