@@ -110,6 +110,7 @@
                   inputs = null;
                   modalElement = null;
                   modalScope = null;
+                  $rootScope.$applyAsync();
                 }, delay);
               }
             };
